@@ -22,12 +22,22 @@ export const AppProvider = ({ children }) => {
   const closeSubmenu = () => {
     setSubmenuUp(false);
   };
-  return <StripeContext.Provider value={{
-    sidebarUp, submenuUp, openSidebar, closeSidebar, openSubmenu, closeSubmenu
-  }}>{children}</StripeContext.Provider>;
+  return (
+    <StripeContext.Provider
+      value={{
+        sidebarUp,
+        submenuUp,
+        openSidebar,
+        closeSidebar,
+        openSubmenu,
+        closeSubmenu,
+      }}
+    >
+      {children}
+    </StripeContext.Provider>
+  );
 };
 
-
-export const useGlobalStripe = (0 => {
-    return useContext(StripeContext)
-})
+export const useGlobalStripe = () => {
+  return useContext(StripeContext);
+};
