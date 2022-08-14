@@ -4,7 +4,7 @@ import sublinks from './data';
 const StripeContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [sidebarUp, setSidebarUp] = useState(true);
+  const [sidebarUp, setSidebarUp] = useState(false);
   const [submenuUp, setSubmenuUp] = useState(true);
 
   const openSidebar = () => {
