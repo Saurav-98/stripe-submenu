@@ -5,7 +5,9 @@ const StripeContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [sidebarUp, setSidebarUp] = useState(false);
-  const [submenuUp, setSubmenuUp] = useState(true);
+  const [submenuUp, setSubmenuUp] = useState(false);
+
+  const [location, setLocation] = useState({});
 
   const openSidebar = () => {
     setSidebarUp(true);
@@ -15,7 +17,8 @@ export const AppProvider = ({ children }) => {
     setSidebarUp(false);
   };
 
-  const openSubmenu = () => {
+  const openSubmenu = (text, coordinates) => {
+    setLocation(coordinates);
     setSubmenuUp(true);
   };
 
@@ -31,6 +34,7 @@ export const AppProvider = ({ children }) => {
         closeSidebar,
         openSubmenu,
         closeSubmenu,
+        location,
       }}
     >
       {children}

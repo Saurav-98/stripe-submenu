@@ -1,7 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
+import { useGlobalStripe } from './context';
 
 const Submenu = () => {
-  return <h2>submenu component</h2>
-}
+  const { submenuUp, location } = useGlobalStripe();
 
-export default Submenu
+  const container = useRef(null);
+
+  useEffect(() => {
+    const submenu = container.current;
+    const { center, bottom } = location;
+    submenu.style.left = `${center}px`;
+    submenu.style.bottom = `${bottom}px`;
+  }, [location]);
+
+  return (
+    <aside
+      className={`${submenuUp ? 'submenu show' : 'submenu'}`}
+      ref={container}
+    >
+      submenu
+    </aside>
+  );
+};
+
+export default Submenu;
